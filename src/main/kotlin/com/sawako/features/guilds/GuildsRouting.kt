@@ -40,17 +40,15 @@ fun Application.configureGuildsRouting() {
 
         }
 
-        post("/guilds/create/pack") {
-            val guilds = call.receive<List<GuildReceiveRemote>>()
-
-            guilds.forEach { guild ->
+        post("/guilds/{id}/delete") {
+            call.parameters["id"]?.toLong()?.let {
                 try {
-                    GuildsController.createGuild(guild)
+                    GuildsController.deleteGuild(it)
+                    call.respond(HttpStatusCode.OK, "Deleted successfully")
                 } catch (e: Exception) {
-                    call.respond(HttpStatusCode.BadRequest, "Creation Failed")
+                    call.respond(HttpStatusCode.BadRequest, "Deletion failed")
                 }
             }
-            call.respond(HttpStatusCode.Created, "Created successfully")
         }
     }
 }

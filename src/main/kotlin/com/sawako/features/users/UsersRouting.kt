@@ -38,17 +38,15 @@ fun Application.configureUsersRouting() {
 
         }
 
-        post("/users/create/pack") {
-            val users = call.receive<List<UserReceiveRemote>>()
-
-            users.forEach {user ->
+        post("/users/{id}/delete" ) {
+            call.parameters["id"]?.toLong()?.let {
                 try {
-                    UsersController.createUser(user)
+                    UsersController.deleteUser(it)
+                    call.respond(HttpStatusCode.OK, "Deleted successfully")
                 } catch (e: Exception) {
-                    call.respond(HttpStatusCode.BadRequest, "Creation Failed")
+                    call.respond(HttpStatusCode.BadRequest, "Deletion failed")
                 }
             }
-            call.respond(HttpStatusCode.Created, "Created successfully")
         }
     }
 }

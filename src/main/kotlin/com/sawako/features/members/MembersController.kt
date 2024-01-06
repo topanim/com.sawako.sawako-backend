@@ -10,5 +10,15 @@ object MembersController {
 
     fun getMember(id: Long) = Members.fetchOne(id)
 
+    fun getMember(guildId: Long, userId: Long) = Members.fetchOne(guildId, userId)
+
     fun getMembers() = Members.fetchAll()
+
+    fun getMembersFromGuild(id: Long) = Members.fetchAllFromGuild(id)
+
+    fun getTop(id: Long) = Members.fetchGuildTop(id)
+
+    fun deleteMember(id: Long) {
+        Members.delete(id)
+    }
 }

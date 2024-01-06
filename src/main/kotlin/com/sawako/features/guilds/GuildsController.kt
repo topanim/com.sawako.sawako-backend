@@ -4,7 +4,6 @@ import com.sawako.database.guilds.GuildDTO
 import com.sawako.database.guilds.Guilds
 import com.sawako.database.guilds.mapTOGuildDTO
 import com.sawako.database.guilds.mapToGuildResponseRemote
-import com.sawako.database.guilds.settings.GuildSettingsController
 import com.sawako.features.guilds.models.GuildReceiveRemote
 import com.sawako.features.guilds.models.GuildResponseRemote
 
@@ -19,4 +18,8 @@ object GuildsController {
 
     fun getGuilds(): List<GuildResponseRemote> = Guilds.fetchAll().map { it.mapToGuildResponseRemote() }
 
+
+    fun deleteGuild(id: Long) {
+        Guilds.delete(id)
+    }
 }

@@ -2,9 +2,9 @@ package com.sawako.database.members
 
 import com.sawako.database.guilds.Guilds
 import com.sawako.database.users.Users
-import com.sawako.database.users.mapToUserDTO
 import com.sawako.features.members.models.MemberReceiveRemote
 import org.jetbrains.exposed.sql.*
+import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 import org.jetbrains.exposed.sql.transactions.transaction
 
 object Members : Table("members") {
@@ -48,11 +48,48 @@ object Members : Table("members") {
         }
     }
 
+    fun fetchOne(guildID: Long, userID: Long): MemberDTO {
+        return transaction {
+            select {
+                (guildId eq guildID) and (userId eq userID)
+            }.single().mapToMemberDTO()
+        }
+    }
+
     fun fetchAll(): List<MemberDTO> {
         return transaction {
             selectAll().map {
                 it.mapToMemberDTO()
             }
+        }
+    }
+
+    fun fetchGuildTop(id: Long): List<MemberDTO> {
+        return transaction {
+            select { guildId eq id}
+                .orderBy(lvl to SortOrder.DESC)
+                .orderBy(exp to SortOrder.DESC)
+                    .map { it.mapToMemberDTO() }
+        }
+    }
+
+    fun fetchAllFromGuild(id: Long) {
+        return transaction {
+            select { guildId eq id }.map {
+                it.mapToMemberDTO()
+            }
+        }
+    }
+
+    fun delete(id: Long) {
+        transaction {
+            deleteWhere { memberId eq id }
+        }
+    }
+
+    fun deleteAllFromGuild(id: Long) {
+        transaction {
+            deleteWhere { guildId eq id }
         }
     }
 

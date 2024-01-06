@@ -1,9 +1,7 @@
 package com.sawako.database.members
 
-import com.sawako.database.guilds.Guilds
 import com.sawako.database.members.Members.about
 import com.sawako.database.members.Members.birthdate
-import com.sawako.database.members.Members.default
 import com.sawako.database.members.Members.exp
 import com.sawako.database.members.Members.gender
 import com.sawako.database.members.Members.guildId
@@ -14,18 +12,14 @@ import com.sawako.database.members.Members.name
 import com.sawako.database.members.Members.upExp
 import com.sawako.database.members.Members.userId
 import com.sawako.database.members.Members.wallet
-import com.sawako.database.users.Users
 import com.sawako.utils.extensions.default
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import org.jetbrains.exposed.sql.Column
 import org.jetbrains.exposed.sql.ResultRow
-import org.jetbrains.exposed.sql.statements.InsertStatement
-import org.jetbrains.exposed.sql.wrapAsExpression
 
 @Serializable
 data class MemberDTO(
-    @SerialName("member_id")val memberId: Long,
+    @SerialName("id") val memberId: Long,
     @SerialName("guild_id") val guildId: Long,
     @SerialName("user_id") val userId: Long,
     val name: String,
@@ -35,7 +29,7 @@ data class MemberDTO(
     val lover: Long?,
     val exp: Int,
     val lvl: Int,
-    val upExp: Int,
+    @SerialName("up_exp") val upExp: Int,
     val wallet: Int,
 )
 

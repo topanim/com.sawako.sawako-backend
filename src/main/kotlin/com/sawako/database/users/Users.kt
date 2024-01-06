@@ -1,7 +1,7 @@
 package com.sawako.database.users
 
-import com.sawako.database.guilds.mapToGuildDTO
 import org.jetbrains.exposed.sql.*
+import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 import org.jetbrains.exposed.sql.transactions.transaction
 
 object Users : Table("users") {
@@ -32,6 +32,12 @@ object Users : Table("users") {
             }
         } catch (e: Exception) {
             emptyList()
+        }
+    }
+
+    fun delete(id: Long) {
+        transaction {
+            deleteWhere { userId eq id }
         }
     }
 }

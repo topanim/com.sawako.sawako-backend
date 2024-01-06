@@ -15,14 +15,36 @@ fun Application.configureMembersRouting() {
             )
         }
 
-        get("/members/{id}") {
+        get("/members/top") {
             call.parameters["id"]?.toLong()?.let {
                 call.respond(HttpStatusCode.OK,
-                    MembersController.getMember(it)
+                    MembersController.getTop(it)
                 )
             }
 
-            call.respond(HttpStatusCode.OK, "Member not found")
+            call.respond(HttpStatusCode.BadRequest, "Bad Request")
+
+        }
+
+        get("/members/one/") {
+            val guildId = call.parameters["guild_id"]?.toLong()
+            val userId = call.parameters["user_id"]?.toLong()
+
+            if (guildId != null && userId != null) {
+                call.respond(HttpStatusCode.OK, MembersController.getMember(guildId, userId))
+            }
+
+            call.respond(HttpStatusCode.BadRequest, "Bad Request")
+        }
+
+        get("/members/from/{id}") {
+            call.parameters["id"]?.toLong()?.let {
+                call.respond(HttpStatusCode.OK,
+                    MembersController.getMembersFromGuild(it)
+                )
+            }
+
+            call.respond(HttpStatusCode.BadRequest, "Bad Request")
         }
 
         post("/members/create") {
@@ -37,17 +59,18 @@ fun Application.configureMembersRouting() {
 
         }
 
-        post("/members/create/pack") {
-            val members = call.receive<List<MemberReceiveRemote>>()
+        post("/members/{id}/delete" ) {
+            call.parameters["id"]?.toLong()?.let {
+                println(it)
 
-            members.forEach { member ->
                 try {
-                    MembersController.createMember(member)
+                    MembersController.deleteMember(it)
+                    call.respond(HttpStatusCode.OK, "Deleted successfully")
                 } catch (e: Exception) {
-                    call.respond(HttpStatusCode.BadRequest, "Creation Failed")
+                    println(e)
+                    call.respond(HttpStatusCode.BadRequest, "Deletion failed")
                 }
             }
-            call.respond(HttpStatusCode.Created, "Created successfully")
         }
     }
 }

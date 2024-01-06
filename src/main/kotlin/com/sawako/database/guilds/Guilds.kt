@@ -1,9 +1,8 @@
 package com.sawako.database.guilds
 
-import com.sawako.database.users.UserDTO
-import com.sawako.database.users.Users
-import kotlinx.serialization.json.Json
+import com.sawako.database.members.Members
 import org.jetbrains.exposed.sql.*
+import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 import org.jetbrains.exposed.sql.transactions.transaction
 
 object Guilds : Table("guilds") {
@@ -34,6 +33,13 @@ object Guilds : Table("guilds") {
             }
         } catch (e: Exception) {
             emptyList()
+        }
+    }
+
+    fun delete(id: Long) {
+        transaction {
+            Members.deleteAllFromGuild(id)
+            deleteWhere { guildId eq id }
         }
     }
 }

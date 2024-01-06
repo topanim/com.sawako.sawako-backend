@@ -12,5 +12,9 @@ object UsersController {
 
     fun getUsers(): List<UserDTO> = Users.fetchAll()
 
-    fun getUser(id: Long): UserDTO = Users.fetchOne(id = id)
+    fun getUser(id: Long): UserDTO = Users.fetchOne(id)
+
+    fun deleteUser(id: Long) {
+        Users.delete(id)
+    }
 }

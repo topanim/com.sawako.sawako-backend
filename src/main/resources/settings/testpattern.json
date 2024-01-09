@@ -7,6 +7,56 @@
     }
   },
   "settings": {
+    "greeting": {
+      "enabled": true,
+      "channel": 1167446320588521512,
+      "send": {
+        "flag": true,
+        "text": {
+          "flag": false,
+          "content": null
+        },
+        "embed": {
+          "flag": true,
+          "entity": {
+            "title": "Пример {member.id}",
+            "description": "Это пример {member.display_name} сообщения, созданного из JSON.",
+            "color": 65280,
+            "timestamp": "2024-01-09 20:40:22.565713",
+            "url": "https://w.forfun.com/fetch/36/36b936cd1fb8b0523e029ab76bae3373.jpeg",
+            "image": {
+              "url": null
+            },
+            "author": {
+              "name": "author name",
+              "url": "https://w.forfun.com/fetch/36/36b936cd1fb8b0523e029ab76bae3373.jpeg",
+              "icon_url": "https://w.forfun.com/fetch/36/36b936cd1fb8b0523e029ab76bae3373.jpeg"
+            },
+            "thumbnail": {
+              "url": "{member.avatar.url}",
+              "width": 300,
+              "height": 300
+            },
+            "footer": {
+              "text": "footer text",
+              "icon_url": "https://w.forfun.com/fetch/36/36b936cd1fb8b0523e029ab76bae3373.jpeg"
+            },
+            "fields": [
+              {
+                "name": "Поле 1",
+                "value": "Значение поля 1",
+                "inline": false
+              },
+              {
+                "name": "Поле 2",
+                "value": "Значение поля 2",
+                "inline": true
+              }
+            ]
+          }
+        }
+      }
+    },
     "logging": {
       "enabled": true,
       "channel": 1167446320588521512
@@ -40,9 +90,12 @@
         },
         "embed": {
           "flag": false,
-          "title": null,
-          "description": null,
-          "fields": []
+          "entity": {
+            "title": null,
+            "description": null,
+            "color": null,
+            "fields": []
+          }
         }
       }
     },
@@ -70,9 +123,12 @@
         },
         "embed": {
           "flag": false,
-          "title": null,
-          "description": null,
-          "fields": []
+          "entity": {
+            "title": null,
+            "description": null,
+            "color": null,
+            "fields": []
+          }
         }
       }
     },

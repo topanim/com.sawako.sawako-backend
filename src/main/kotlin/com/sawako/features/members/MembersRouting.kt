@@ -1,6 +1,8 @@
 package com.sawako.features.members
 
 import com.sawako.features.members.models.MemberReceiveRemote
+import com.sawako.features.members.models.UpdateMemberBioReceiveRemote
+import com.sawako.features.members.models.UpdateMemberWalletReceiveRemote
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.request.*
@@ -16,25 +18,19 @@ fun Application.configureMembersRouting() {
         }
 
         get("/members/top") {
-            call.parameters["id"]?.toLong()?.let {
+            call.parameters["guild_id"]?.toLong()?.let {
                 call.respond(HttpStatusCode.OK,
                     MembersController.getTop(it)
                 )
             }
 
             call.respond(HttpStatusCode.BadRequest, "Bad Request")
-
         }
 
         get("/members/one/") {
-            val guildId = call.parameters["guild_id"]?.toLong()
-            val userId = call.parameters["user_id"]?.toLong()
-
-            if (guildId != null && userId != null) {
-                call.respond(HttpStatusCode.OK, MembersController.getMember(guildId, userId))
-            }
-
-            call.respond(HttpStatusCode.BadRequest, "Bad Request")
+            val receiveRemote= call.receive<MemberReceiveRemote>()
+            call.respond(HttpStatusCode.OK, MembersController.getMember(receiveRemote))
+//            call.respond(HttpStatusCode.BadRequest, "Bad Request")
         }
 
         get("/members/from/{id}") {
@@ -59,15 +55,28 @@ fun Application.configureMembersRouting() {
 
         }
 
+        post("/members/update/bio") {
+            val receiveRemote = call.receive<UpdateMemberBioReceiveRemote>()
+            call.respond(HttpStatusCode.OK, MembersController.updateBio(receiveRemote))
+        }
+
+        post("/members/update/wallet") {
+            val receiveRemote = call.receive<UpdateMemberWalletReceiveRemote>()
+            MembersController.updateWallet(receiveRemote)
+            call.respond(HttpStatusCode.OK, "Updated successfully")
+        }
+
+        post("/members/bio/reset") {
+            val receiveRemote = call.receive<MemberReceiveRemote>()
+            call.respond(HttpStatusCode.OK, MembersController.resetBio(receiveRemote))
+        }
+
         post("/members/{id}/delete" ) {
             call.parameters["id"]?.toLong()?.let {
-                println(it)
-
                 try {
                     MembersController.deleteMember(it)
                     call.respond(HttpStatusCode.OK, "Deleted successfully")
                 } catch (e: Exception) {
-                    println(e)
                     call.respond(HttpStatusCode.BadRequest, "Deletion failed")
                 }
             }

@@ -4,7 +4,7 @@ import java.io.File
 
 
 object GuildSettingsController {
-    private const val SETTINGS_PATTERN_PATH= "/settings/pattern.json"
+    private const val SETTINGS_PATTERN_PATH= "/settings/testpattern.json"
 
     fun getDefaultSettings(): String = object {}.javaClass.getResource(SETTINGS_PATTERN_PATH)?.readText() ?: "{}"
 

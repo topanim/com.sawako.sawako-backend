@@ -8,12 +8,12 @@
   },
   "settings": {
     "logging": {
-      "enabled": false,
-      "channel": null
+      "enabled": true,
+      "channel": 1167446320588521512
     },
     "activity": {
-      "enabled": false,
-      "channel": null,
+      "enabled": true,
+      "channel": 1167446320588521512,
       "achievements": [],
       "use": {
         "permissions": [],
@@ -26,8 +26,8 @@
       }
     },
     "automod": {
-      "enabled": false,
-      "channel": null,
+      "enabled": true,
+      "channel": 1167446320588521512,
       "ignore": {
         "permissions": [],
         "roles": []
@@ -47,8 +47,8 @@
       }
     },
     "moderation": {
-      "enabled": false,
-      "channel": null,
+      "enabled": true,
+      "channel": 1167446320588521512,
       "use": {
         "permissions": [],
         "roles": [],
@@ -60,8 +60,8 @@
       }
     },
     "events": {
-      "enabled": false,
-      "channel": null,
+      "enabled": true,
+      "channel": 1167446320588521512,
       "send": {
         "flag": false,
         "text": {
@@ -77,15 +77,15 @@
       }
     },
     "autovoice": {
-      "enabled": false,
-      "channel": null,
+      "enabled": true,
+      "channel": 1167446320588521512,
       "control": {
         "permissions": [],
         "roles": []
       }
     },
     "autoroles": {
-      "enabled": false,
+      "enabled": true,
       "use": {
         "permissions": [],
         "roles": [],

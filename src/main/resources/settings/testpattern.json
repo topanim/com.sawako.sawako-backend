@@ -13,8 +13,8 @@
       "send": {
         "flag": true,
         "text": {
-          "flag": false,
-          "content": null
+          "flag": true,
+          "content": "привет {member.mention}"
         },
         "embed": {
           "flag": true,
@@ -64,7 +64,13 @@
     "activity": {
       "enabled": true,
       "channel": 1167446320588521512,
-      "achievements": [],
+      "achievements": [
+        {
+         "lvl": 1,
+         "add": [12421545],
+         "remove": [1243345]
+        }
+      ],
       "use": {
         "permissions": [],
         "roles": [],
@@ -73,28 +79,111 @@
       "control": {
         "permissions": [],
         "roles": []
-      }
-    },
-    "automod": {
-      "enabled": true,
-      "channel": 1167446320588521512,
-      "ignore": {
-        "permissions": [],
-        "roles": []
       },
       "send": {
-        "flag": false,
+        "flag": true,
+        "auto_delete": true,
         "text": {
           "flag": false,
           "content": null
         },
         "embed": {
-          "flag": false,
+          "flag": true,
           "entity": {
-            "title": null,
-            "description": null,
-            "color": null,
-            "fields": []
+            "title": "Пример {member.mention}",
+            "description": "Ты поднял свой уровень с {dto.before.lvl} до {dto.after.lvl}.",
+            "color": 65280,
+            "timestamp": "2024-01-09 20:40:22.565713",
+            "url": "https://w.forfun.com/fetch/36/36b936cd1fb8b0523e029ab76bae3373.jpeg",
+            "image": {
+              "url": null
+            },
+            "thumbnail": {
+              "url": "{member.avatar.url}",
+              "width": 300,
+              "height": 300
+            },
+            "footer": {
+              "text": "footer text",
+              "icon_url": "https://w.forfun.com/fetch/36/36b936cd1fb8b0523e029ab76bae3373.jpeg"
+            }
+          }
+        }
+      }
+    },
+    "auto_mod": {
+      "anti_spam": {
+        "enabled": true,
+        "channel": 1167446320588521512,
+        "ignore": {
+          "permissions": [],
+          "roles": []
+        },
+        "send": {
+          "flag": false,
+          "auto_delete": true,
+          "text": {
+            "flag": false,
+            "content": null
+          },
+          "embed": {
+            "flag": false,
+            "entity": {
+              "title": null,
+              "description": null,
+              "color": null,
+              "fields": []
+            }
+          }
+        }
+      },
+      "anti_advertising": {
+        "enabled": true,
+        "channel": 1167446320588521512,
+        "ignore": {
+          "permissions": [],
+          "roles": []
+        },
+        "send": {
+          "auto_delete": true,
+          "flag": false,
+          "text": {
+            "flag": false,
+            "content": null
+          },
+          "embed": {
+            "flag": false,
+            "entity": {
+              "title": null,
+              "description": null,
+              "color": null,
+              "fields": []
+            }
+          }
+        }
+      },
+      "anti_caps": {
+        "enabled": true,
+        "channel": 1167446320588521512,
+        "ignore": {
+          "permissions": [],
+          "roles": []
+        },
+        "send": {
+          "flag": false,
+          "auto_delete": true,
+          "text": {
+            "flag": false,
+            "content": null
+          },
+          "embed": {
+            "flag": false,
+            "entity": {
+              "title": null,
+              "description": null,
+              "color": null,
+              "fields": []
+            }
           }
         }
       }

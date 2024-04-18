@@ -1,6 +1,6 @@
 package com.sawako.backend.features.guilds.models
 
-import com.sawako.database.guilds.GuildDTO
+import com.sawako.backend.database.guilds.GuildDTO
 import kotlinx.serialization.Contextual
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json

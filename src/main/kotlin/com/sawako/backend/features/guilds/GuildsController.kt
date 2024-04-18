@@ -1,6 +1,7 @@
 package com.sawako.backend.features.guilds
 
-import com.sawako.backend.database.guilds.*
+import com.sawako.backend.database.guilds.GuildDTO
+import com.sawako.backend.database.guilds.GuildsDAO
 import com.sawako.backend.features.guilds.models.GuildReceiveRemote
 
 object GuildsController {

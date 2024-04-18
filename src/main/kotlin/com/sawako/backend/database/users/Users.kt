@@ -1,8 +1,7 @@
 package com.sawako.backend.database.users
 
-import org.jetbrains.exposed.sql.*
-import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
-import org.jetbrains.exposed.sql.transactions.transaction
+import org.jetbrains.exposed.sql.Column
+import org.jetbrains.exposed.sql.Table
 
 object Users : Table("users") {
     val userId: Column<Long> = long("id")

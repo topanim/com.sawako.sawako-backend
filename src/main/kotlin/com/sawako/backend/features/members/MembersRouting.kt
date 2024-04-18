@@ -7,6 +7,7 @@ import io.ktor.server.application.*
 import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
+import io.ktor.util.reflect.*
 
 fun Application.configureMembersRouting() {
     routing {
@@ -17,15 +18,7 @@ fun Application.configureMembersRouting() {
             )
         }
 
-        get("/members/top") {
-            val guild = call.receive<GuildReceiveRemote>()
-            call.respond(
-                HttpStatusCode.OK,
-                MembersController.getTop(guild)
-            )
-        }
-
-        get("/members/one/") {
+        get("/members/one") {
             val receiveRemote = call.receive<MemberReceiveRemote>()
             call.respond(HttpStatusCode.OK, MembersController.getMember(receiveRemote))
         }
@@ -35,6 +28,14 @@ fun Application.configureMembersRouting() {
             call.respond(
                 HttpStatusCode.OK,
                 MembersController.getGuildMembers(guild)
+            )
+        }
+
+        get("/members/from/{id}/top") {
+            val guild = call.receive<GuildReceiveRemote>()
+            call.respond(
+                HttpStatusCode.OK,
+                MembersController.getTop(guild)
             )
         }
 
@@ -72,7 +73,7 @@ fun Application.configureMembersRouting() {
             call.respond(HttpStatusCode.OK, "Updated successfully")
         }
 
-        post("/members/bio/reset") {
+        post("/members/reset/bio") {
             val receiveRemote = call.receive<MemberReceiveRemote>()
             call.respond(HttpStatusCode.OK, MembersController.resetBio(receiveRemote))
         }

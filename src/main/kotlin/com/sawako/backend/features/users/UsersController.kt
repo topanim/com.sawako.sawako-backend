@@ -10,7 +10,9 @@ object UsersController {
 
     suspend fun getUsers(): List<UserDTO> = UsersDAO.fetchAll()
 
-    suspend fun getUser(id: Long): UserDTO = UsersDAO.fetchOne(id)
+    suspend fun getUser(receiveRemote: UserReceiveRemote): UserDTO =
+        UsersDAO.fetchOne(receiveRemote.id)
 
-    suspend fun deleteUser(id: Long) = UsersDAO.delete(id)
+    suspend fun deleteUser(receiveRemote: UserReceiveRemote) =
+        UsersDAO.delete(receiveRemote.id)
 }

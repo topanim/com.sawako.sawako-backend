@@ -1,6 +1,5 @@
 package com.sawako.backend.features.members.models
 
-import com.sawako.backend.database.members.MemberDTO
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

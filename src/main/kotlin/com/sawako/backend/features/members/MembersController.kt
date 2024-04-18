@@ -1,6 +1,5 @@
 package com.sawako.backend.features.members
 
-import com.sawako.backend.database.members.MemberDTO
 import com.sawako.backend.database.members.MembersDAO
 import com.sawako.backend.features.guilds.models.GuildReceiveRemote
 import com.sawako.backend.features.members.models.*

@@ -1,8 +1,8 @@
 package com.sawako.backend.database
 
+import com.sawako.backend.ApplicationConfig
 import com.sawako.backend.database.guilds.Guilds
 import com.sawako.backend.database.members.Members
-import com.sawako.backend.database.store.Store
 import com.sawako.backend.database.users.Users
 import kotlinx.coroutines.Dispatchers
 import org.jetbrains.exposed.sql.Database
@@ -16,10 +16,10 @@ object DatabaseFactory {
 
     fun init(){
         Database.connect(
-            "jdbc:postgresql://localhost:3001/postgres",
+            "jdbc:postgresql://localhost:${ApplicationConfig.DB_PORT}/${ApplicationConfig.DB_NAME}",
             driver = "org.postgresql.Driver",
-            user = "postgres",
-            password = "12356"
+            user = ApplicationConfig.DB_USER,
+            password = ApplicationConfig.DB_PASSWORD
         )
 
         transaction {
@@ -28,15 +28,13 @@ object DatabaseFactory {
             SchemaUtils.create(
                 Guilds,
                 Users,
-                Members,
-                Store
+                Members
             )
 
             SchemaUtils.createMissingTablesAndColumns(
                 Guilds,
                 Users,
-                Members,
-                Store
+                Members
             )
         }
     }

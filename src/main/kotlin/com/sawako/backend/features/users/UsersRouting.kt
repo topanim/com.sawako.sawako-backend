@@ -9,44 +9,29 @@ import io.ktor.server.routing.*
 
 fun Application.configureUsersRouting() {
     routing {
-
         get("/users/") {
             call.respond(UsersController.getUsers())
         }
 
         get("/users/{id}") {
-            call.parameters["id"]?.toLong()?.let { it1 ->
-                call.respond(HttpStatusCode.OK,
-                    UsersController.getUser(
-                        id = it1
-                    )
-                )
-            }
-
-            call.respond(HttpStatusCode.NotFound, "User not found")
+            val user = call.receive<UserReceiveRemote>()
+            call.respond(
+                HttpStatusCode.OK,
+                UsersController.getUser(user)
+            )
         }
 
         post("/users/create") {
             val user = call.receive<UserReceiveRemote>()
-
-            try {
-                UsersController.createUser(user)
-                call.respond(HttpStatusCode.Created, "Created successfully")
-            } catch (e: Exception) {
-                call.respond(HttpStatusCode.BadRequest, "Creation Failed")
-            }
-
+            UsersController.createUser(user)
+            call.respond(HttpStatusCode.OK)
         }
 
-        post("/users/{id}/delete" ) {
-            call.parameters["id"]?.toLong()?.let {
-                try {
-                    UsersController.deleteUser(it)
-                    call.respond(HttpStatusCode.OK, "Deleted successfully")
-                } catch (e: Exception) {
-                    call.respond(HttpStatusCode.BadRequest, "Deletion failed")
-                }
-            }
+        post("/users/{id}/delete") {
+            val user = call.receive<UserReceiveRemote>()
+            UsersController.deleteUser(user)
+            call.respond(HttpStatusCode.OK, "Deleted successfully")
         }
     }
 }
+

@@ -3,6 +3,7 @@ val exposed_version: String by project
 val ktor_version: String by project
 val kotlin_version: String by project
 val logback_version: String by project
+val kotlinx_serialization: String by project
 
 val postgres_version: String by project
 val h2_version: String by project
@@ -34,6 +35,11 @@ dependencies {
     implementation("io.ktor:ktor-server-content-negotiation-jvm")
     implementation("io.ktor:ktor-server-openapi")
     implementation("io.ktor:ktor-server-netty-jvm")
+
+    // Serialization
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlinx_serialization")
+
+
 
     // Postgres
     implementation("org.postgresql:postgresql:$postgres_version")

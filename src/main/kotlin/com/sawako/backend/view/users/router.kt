@@ -9,11 +9,11 @@ import io.ktor.server.routing.*
 const val router = "/users"
 
 fun Routing.users() {
-    get("/",  fetchUsers)
+    get("$router/",  fetchUsers)
 
     get("$router/{id}", fetchUser)
 
     post("$router/create", createUser)
 
-    post("$router/{id}/delete", deleteUser)
+    delete("$router/{id}/delete", deleteUser)
 }

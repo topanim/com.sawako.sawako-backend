@@ -12,7 +12,7 @@ object UsersService {
 
     suspend fun getUsers(page: Int, size: Int) = Users.all(
         size,
-        (page * size).toLong()
+        (page.minus(1) * size).toLong()
     ) { Op.TRUE }.toListUserDTO()
 
     suspend fun deleteUser(id: Long) = Users.delete(id)

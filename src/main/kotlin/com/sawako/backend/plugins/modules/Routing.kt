@@ -1,4 +1,4 @@
-package com.sawako.backend.plugins
+package com.sawako.backend.plugins.modules
 
 import io.ktor.server.application.*
 import io.ktor.server.response.*

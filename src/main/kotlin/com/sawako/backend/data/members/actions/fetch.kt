@@ -10,10 +10,16 @@ suspend fun Members.one(guildId: Long, userId: Long) = dbQuery {
     select { (Members.guildId eq guildId) and (Members.userId eq userId) }.single()
 }
 
-suspend fun Members.top(guildId: Long): Unit = dbQuery {
+suspend fun Members.fromGuild(guildId: Long, limit: Int = Int.MAX_VALUE, offset: Long = 0) = dbQuery {
     select { Members.guildId eq guildId }
-        .orderBy(lvl to SortOrder.DESC)
-        .orderBy(exp to SortOrder.DESC)
+        .limit(limit, offset)
         .toList()
 }
 
+suspend fun Members.top(guildId: Long, limit: Int = Int.MAX_VALUE, offset: Long = 0) = dbQuery {
+    select { Members.guildId eq guildId }
+        .orderBy(lvl to SortOrder.DESC)
+        .orderBy(exp to SortOrder.DESC)
+        .limit(limit, offset)
+        .toList()
+}

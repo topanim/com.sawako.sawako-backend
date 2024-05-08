@@ -1,7 +1,6 @@
 package com.sawako.backend.data
 
 import com.sawako.backend.data.DatabaseFactory.dbQuery
-import com.sawako.backend.data.members.Members
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 
@@ -24,14 +23,6 @@ abstract class BaseEntity(name: String) : Table(name) {
 
     suspend fun one(_id: Long) = dbQuery {
         select { id eq _id }.single()
-    }
-
-    suspend fun one(guildId: Long, userId: Long) = dbQuery {
-        select { (Members.guildId eq guildId) and (Members.userId eq userId) }.single()
-    }
-
-    suspend fun delete(guildId: Long, userId: Long): Unit = dbQuery {
-        deleteWhere { (Members.guildId eq guildId) and (Members.userId eq userId) }
     }
 
     suspend fun delete(_id: Long): Unit = dbQuery {

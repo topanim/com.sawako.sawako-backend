@@ -1,7 +1,8 @@
 package com.sawako.backend
 
 import com.sawako.backend.data.DatabaseFactory
-import com.sawako.backend.plugins.configureRouting
+import com.sawako.backend.plugins.modules.configureRouting
+import com.sawako.backend.plugins.plugins
 import com.sawako.backend.view.routing
 import io.ktor.server.application.*
 import io.ktor.server.engine.*
@@ -19,8 +20,6 @@ fun main() {
 fun Application.module() {
     DatabaseFactory.init()
 
-    configureRouting()
-
-    // features
+    plugins()
     routing()
 }

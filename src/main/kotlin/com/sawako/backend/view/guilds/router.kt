@@ -9,6 +9,8 @@ import io.ktor.server.routing.*
 const val router = "/guilds"
 
 fun Routing.guilds() {
+    post("$router/", fetchGuilds)
+
     get("$router/", fetchGuilds)
 
     get("$router/{id}", fetchGuild)

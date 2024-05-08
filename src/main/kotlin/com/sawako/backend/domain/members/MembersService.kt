@@ -1,7 +1,7 @@
 package com.sawako.backend.domain.members
 
 import com.sawako.backend.data.members.Members
-import com.sawako.backend.data.members.actions.create
+import com.sawako.backend.data.members.actions.*
 import org.jetbrains.exposed.sql.Op
 
 object MembersService {
@@ -18,11 +18,19 @@ object MembersService {
         (page * size).toLong()
     ) { Op.TRUE }.toListMemberDTO()
 
-    suspend fun getMembers(MemberIds: List<Long>): List<MemberDTO> =
-        Members.many(MemberIds).toListMemberDTO()
+    suspend fun getMembers(guildId: Long, page: Int, size: Int): List<MemberDTO> = Members.fromGuild(
+        guildId,
+        size,
+        (page.minus(1) * size).toLong()
+    ).toListMemberDTO()
 
-    suspend fun deleteMember(guildId: Long, userId: Long) = Members.delete(id)
+    suspend fun getMembers(memberIds: List<Long>): List<MemberDTO> =
+        Members.many(memberIds).toListMemberDTO()
+
+    suspend fun deleteMember(guildId: Long, userId: Long) = Members.delete(guildId, userId)
 
     suspend fun deleteMember(id: Long) = Members.delete(id)
+
+    suspend fun deleteMembersFrom(guildId: Long) = Members.deleteFromGuild(guildId)
 
 }

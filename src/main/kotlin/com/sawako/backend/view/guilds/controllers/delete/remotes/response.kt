@@ -5,7 +5,7 @@ import com.sawako.backend.view.common.MetaResponse
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class DeleteGuildResponse(
+class DeleteGuildResponse(
     val data: Unit = Unit
 ) : BaseResponse(
     MetaResponse(

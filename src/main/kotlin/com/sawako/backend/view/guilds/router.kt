@@ -1,22 +1,24 @@
 package com.sawako.backend.view.guilds
 
 import com.sawako.backend.view.guilds.controllers.create.createGuild
+import com.sawako.backend.view.guilds.controllers.create.remotes.CreateGuild
 import com.sawako.backend.view.guilds.controllers.delete.deleteGuild
+import com.sawako.backend.view.guilds.controllers.delete.remotes.DeleteGuild
 import com.sawako.backend.view.guilds.controllers.fetch.all.fetchGuilds
+import com.sawako.backend.view.guilds.controllers.fetch.all.remotes.FetchGuilds
 import com.sawako.backend.view.guilds.controllers.fetch.one.fetchGuild
-import io.ktor.server.routing.*
-
-const val router = "/guilds"
+import com.sawako.backend.view.guilds.controllers.fetch.one.remotes.FetchGuild
+import io.ktor.server.resources.*
+import io.ktor.server.resources.post
+import io.ktor.server.routing.Routing
 
 fun Routing.guilds() {
-    post("$router/", fetchGuilds)
+    post<CreateGuild>(createGuild)
 
-    get("$router/", fetchGuilds)
+    get<FetchGuilds>(fetchGuilds)
 
-    get("$router/{id}", fetchGuild)
+    get<FetchGuild>(fetchGuild)
 
-    post("$router/create", createGuild)
-
-    post("$router/{id}/delete", deleteGuild)
+    delete<DeleteGuild>(deleteGuild)
 }
 

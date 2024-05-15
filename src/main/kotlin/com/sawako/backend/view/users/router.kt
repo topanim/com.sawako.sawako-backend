@@ -1,19 +1,22 @@
 package com.sawako.backend.view.users
 
 import com.sawako.backend.view.users.controllers.create.createUser
+import com.sawako.backend.view.users.controllers.create.remotes.CreateUser
 import com.sawako.backend.view.users.controllers.delete.deleteUser
+import com.sawako.backend.view.users.controllers.delete.remotes.DeleteUser
 import com.sawako.backend.view.users.controllers.fetch.all.fetchUsers
+import com.sawako.backend.view.users.controllers.fetch.all.remotes.FetchUsers
 import com.sawako.backend.view.users.controllers.fetch.one.fetchUser
-import io.ktor.server.routing.*
-
-const val router = "/users"
+import com.sawako.backend.view.users.controllers.fetch.one.remotes.FetchUser
+import io.ktor.server.resources.*
+import io.ktor.server.routing.Routing
 
 fun Routing.users() {
-    get("$router/",  fetchUsers)
+    get<FetchUsers>(fetchUsers)
 
-    get("$router/{id}", fetchUser)
+    get<FetchUser>(fetchUser)
 
-    post("$router/create", createUser)
+    post<CreateUser>(createUser)
 
-    delete("$router/{id}/delete", deleteUser)
+    delete<DeleteUser>(deleteUser)
 }

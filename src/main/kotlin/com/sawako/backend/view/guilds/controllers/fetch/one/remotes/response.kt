@@ -6,7 +6,7 @@ import com.sawako.backend.view.common.MetaResponse
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class FetchGuildResponse(
+class FetchGuildResponse(
     val data: GuildDTO
 ) : BaseResponse(
     MetaResponse(

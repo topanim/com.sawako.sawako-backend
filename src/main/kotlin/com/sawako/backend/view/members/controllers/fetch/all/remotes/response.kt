@@ -6,7 +6,7 @@ import com.sawako.backend.view.common.MetaResponse
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class FetchMembersResponse(
+class FetchMembersResponse(
     val data: List<MemberDTO>
 ) : BaseResponse(
     MetaResponse(

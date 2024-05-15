@@ -1,15 +1,13 @@
 package com.sawako.backend.view.members.controllers.delete.remotes
 
-import kotlinx.serialization.SerialName
+import com.sawako.backend.view.members.RMembersByGuild
+import io.ktor.resources.*
 import kotlinx.serialization.Serializable
 
-@Serializable
-data class DeleteMemberReceive(
-    @SerialName("guild_id") val guildId: Long,
-    @SerialName("user_id") val userId: Long
+@Resource("")
+class DeleteMember(
+    val parent: RMembersByGuild.One
 )
 
 @Serializable
-data class DeleteMemberByOwnId(
-    val id: Long
-)
+class DeleteMemberReceive()

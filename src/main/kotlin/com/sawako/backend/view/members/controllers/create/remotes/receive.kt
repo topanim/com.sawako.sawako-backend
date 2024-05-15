@@ -1,11 +1,17 @@
 package com.sawako.backend.view.members.controllers.create.remotes
 
-import kotlinx.serialization.SerialName
+import com.sawako.backend.view.members.RMembers
+import io.ktor.resources.*
 import kotlinx.serialization.Serializable
 
+@Resource("")
+class CreateMember(
+    val parent: RMembers = RMembers(),
+)
+
 @Serializable
-data class CreateMemberReceive(
-    @SerialName("guild_id") val guildId: Long,
-    @SerialName("user_id") val userId: Long
+class CreateMemberBodyReceive(
+    val guildId: Long,
+    val userId: Long
 )
 

@@ -6,10 +6,17 @@ import com.sawako.backend.view.users.users
 import io.ktor.server.application.*
 import io.ktor.server.routing.*
 
-fun Application.routing() {
+fun Application.routes() {
     routing {
         guilds()
         users()
         members()
+
+// TODO: Create routes
+
+//        get("/routes") {
+//            val routes = this@routing.children
+//            call.respondText(routes)
+//        }
     }
 }

@@ -1,20 +1,21 @@
 package com.sawako.backend.view.members.controllers.fetch.all
 
 import com.sawako.backend.domain.members.MembersService
-import com.sawako.backend.view.members.controllers.fetch.all.remotes.FetchMembersReceive
+import com.sawako.backend.view.members.controllers.fetch.all.remotes.FetchMembers
 import com.sawako.backend.view.members.controllers.fetch.all.remotes.FetchMembersResponse
 import io.ktor.http.*
 import io.ktor.server.application.*
-import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.util.pipeline.*
 
-val getMembers: suspend PipelineContext<Unit, ApplicationCall>.(Unit) -> Unit = {
-    val receive = call.receive<FetchMembersReceive>()
+val fetchMembers: suspend PipelineContext<Unit, ApplicationCall>.(FetchMembers) -> Unit = {
     call.respond(
         HttpStatusCode.OK,
         FetchMembersResponse(
-            MembersService.getMembers(receive.page, receive.size)
+            when (it.all) {
+                true -> MembersService.getMembers(1, Int.MAX_VALUE)
+                false -> MembersService.getMembers(it.page, it.size)
+            }
         )
     )
 }

@@ -7,6 +7,7 @@ val kotlinx_serialization: String by project
 
 val postgres_version: String by project
 val h2_version: String by project
+val swagger_codegen_version: String by project
 
 plugins {
     kotlin("jvm") version "1.9.22"
@@ -30,11 +31,13 @@ dependencies {
     implementation("org.jetbrains.exposed:exposed-jdbc:$exposed_version")
 
     // Ktor
-    implementation("io.ktor:ktor-server-core-jvm")
-    implementation("io.ktor:ktor-serialization-kotlinx-json-jvm")
-    implementation("io.ktor:ktor-server-content-negotiation-jvm")
-    implementation("io.ktor:ktor-server-openapi")
-    implementation("io.ktor:ktor-server-netty-jvm")
+    implementation("io.ktor:ktor-server-core-jvm:$ktor_version")
+    implementation("io.ktor:ktor-server-resources:$ktor_version")
+    implementation("io.ktor:ktor-serialization-kotlinx-json-jvm:$ktor_version")
+    implementation("io.ktor:ktor-server-content-negotiation-jvm:$ktor_version")
+    implementation("io.ktor:ktor-server-openapi:$ktor_version")
+    implementation("io.ktor:ktor-server-netty-jvm:$ktor_version")
+    implementation("io.ktor:ktor-server-html-builder:$ktor_version")
 
     // Serialization
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlinx_serialization")

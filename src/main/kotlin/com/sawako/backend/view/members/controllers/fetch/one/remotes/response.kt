@@ -7,7 +7,7 @@ import kotlinx.serialization.Serializable
 
 
 @Serializable
-data class FetchMemberResponse(
+class FetchMemberResponse(
     val data: MemberDTO
 ) : BaseResponse(
     MetaResponse(

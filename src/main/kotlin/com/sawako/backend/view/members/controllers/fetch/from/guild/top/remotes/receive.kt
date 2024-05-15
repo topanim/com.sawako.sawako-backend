@@ -1,11 +1,14 @@
 package com.sawako.backend.view.members.controllers.fetch.from.guild.top.remotes
 
-import kotlinx.serialization.Serializable
+import com.sawako.backend.view.guilds.RGuilds
+import io.ktor.resources.*
 
-@Serializable
-data class FetchGuildTopReceive(
-    val id: Long,
+@Resource("/top")
+class FetchMembersTopByGuild(
+    val parent: RGuilds.One,
+
+    // params
     val page: Int = 1,
     val size: Int = 10,
-    val all: Boolean = false
+    val all: Boolean = true
 )

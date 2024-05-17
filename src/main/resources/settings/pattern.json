@@ -1,3 +1,100 @@
 {
-  "enabled": true
+  "version": "0.0.0",
+  "access_rules": {
+    "write": {
+      "permissions": [],
+      "roles": []
+    }
+  },
+  "settings": {
+    "logging": {
+      "enabled": false,
+      "channel": null
+    },
+    "activity": {
+      "enabled": false,
+      "channel": null,
+      "achievements": [],
+      "use": {
+        "permissions": [],
+        "roles": [],
+        "channels": []
+      },
+      "control": {
+        "permissions": [],
+        "roles": []
+      }
+    },
+    "automod": {
+      "enabled": false,
+      "channel": null,
+      "ignore": {
+        "permissions": [],
+        "roles": []
+      },
+      "send": {
+        "flag": false,
+        "text": {
+          "flag": false,
+          "content": null
+        },
+        "embed": {
+          "flag": false,
+          "title": null,
+          "description": null,
+          "fields": []
+        }
+      }
+    },
+    "moderation": {
+      "enabled": false,
+      "channel": null,
+      "use": {
+        "permissions": [],
+        "roles": [],
+        "channels": []
+      },
+      "control": {
+        "permissions": [],
+        "roles": []
+      }
+    },
+    "events": {
+      "enabled": false,
+      "channel": null,
+      "send": {
+        "flag": false,
+        "text": {
+          "flag": false,
+          "content": null
+        },
+        "embed": {
+          "flag": false,
+          "title": null,
+          "description": null,
+          "fields": []
+        }
+      }
+    },
+    "autovoice": {
+      "enabled": false,
+      "channel": null,
+      "control": {
+        "permissions": [],
+        "roles": []
+      }
+    },
+    "autoroles": {
+      "enabled": false,
+      "use": {
+        "permissions": [],
+        "roles": [],
+        "channels": []
+      },
+      "control": {
+        "permissions": [],
+        "roles": []
+      }
+    }
+  }
 }

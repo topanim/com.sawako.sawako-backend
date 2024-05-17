@@ -10,6 +10,6 @@ class FetchMembersResponse(
     val data: List<MemberDTO>
 ) : BaseResponse(
     MetaResponse(
-        message = "Guilds fetched successfully",
+        message = "Members fetched successfully",
     )
 )

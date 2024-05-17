@@ -16,7 +16,20 @@ fun Application.routes() {
 
 //        get("/routes") {
 //            val routes = this@routing.children
-//            call.respondText(routes)
+//            call.respondText(
+//                routes
+//                    .allRoutes("http://")
+//            )
+//                    .joinToString("\n")
 //        }
     }
 }
+
+//fun List<Route>.allRoutes(prefix: String = ""): MutableList<String> {
+//    val list = mutableListOf<String>()
+//    forEach { route ->
+//        if (route.children.isEmpty()) list.add(prefix + route.selector)
+//        else route.children.allRoutes(prefix + route.selector)
+//    }
+//    return list
+//}

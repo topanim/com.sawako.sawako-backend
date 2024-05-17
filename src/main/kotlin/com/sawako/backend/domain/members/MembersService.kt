@@ -15,7 +15,7 @@ object MembersService {
 
     suspend fun getMembers(page: Int, size: Int): List<MemberDTO> = Members.all(
         size,
-        (page * size).toLong()
+        (page.minus(1) * size).toLong()
     ) { Op.TRUE }.toListMemberDTO()
 
     suspend fun getMembersFromGuild(guildId: Long, page: Int, size: Int): List<MemberDTO> = Members.fromGuild(

@@ -13,8 +13,8 @@ val fetchMembersByGuild: suspend PipelineContext<Unit, ApplicationCall>.(FetchMe
         HttpStatusCode.OK,
         FetchMembersFromGuildResponse(
             when (it.all) {
-                true -> MembersService.getMembersFromGuild(it.parent.guildId, 1, Int.MAX_VALUE)
-                false -> MembersService.getMembersFromGuild(it.parent.guildId, it.page, it.size)
+                true -> MembersService.getMembersFromGuild(it.parent.parent.guildId, 1, Int.MAX_VALUE)
+                false -> MembersService.getMembersFromGuild(it.parent.parent.guildId, it.page, it.size)
             }
         )
     )

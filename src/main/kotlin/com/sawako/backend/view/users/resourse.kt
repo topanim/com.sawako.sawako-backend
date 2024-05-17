@@ -5,7 +5,7 @@ import io.ktor.resources.*
 @Resource("/users")
 class RUsers {
 
-    @Resource("/create")
+    @Resource("{userId}")
     class One(
         val parent: RUsers = RUsers(),
 

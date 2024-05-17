@@ -1,13 +1,13 @@
 package com.sawako.backend.view.members.controllers.fetch.from.guild.all.remotes
 
 
-import com.sawako.backend.view.guilds.RGuilds
+import com.sawako.backend.view.members.RMembersByGuild
 import io.ktor.resources.*
 
 
 @Resource("/")
 class FetchMembersByGuild(
-    val parent: RGuilds.One,
+    val parent: RMembersByGuild,
 
     // params
     val page: Int = 1,

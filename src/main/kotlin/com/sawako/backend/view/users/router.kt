@@ -12,11 +12,11 @@ import io.ktor.server.resources.*
 import io.ktor.server.routing.Routing
 
 fun Routing.users() {
+    post<CreateUser>(createUser)
+
     get<FetchUsers>(fetchUsers)
 
     get<FetchUser>(fetchUser)
-
-    post<CreateUser>(createUser)
 
     delete<DeleteUser>(deleteUser)
 }

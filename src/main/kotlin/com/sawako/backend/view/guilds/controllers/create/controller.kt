@@ -12,6 +12,18 @@ import io.ktor.util.pipeline.*
 
 val createGuild: suspend PipelineContext<Unit, ApplicationCall>.(CreateGuild) -> Unit = {
     val receive: CreateGuildReceive = call.receive()
-    GuildsService.createGuild(receive.id)
-    call.respond(HttpStatusCode.Created, CreateGuildResponse())
+    try {
+        GuildsService.createGuild(receive.id)
+        call.respond(HttpStatusCode.Created, CreateGuildResponse())
+    } catch (e: Exception) {
+        call.respond(
+            HttpStatusCode.Conflict,
+            CreateGuildResponse {
+                message = e.message.toString()
+                status = HttpStatusCode.Conflict.value
+            }
+        )
+    }
+
+
 }

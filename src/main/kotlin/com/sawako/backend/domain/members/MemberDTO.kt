@@ -20,8 +20,8 @@ import org.jetbrains.exposed.sql.ResultRow
 @Serializable
 data class MemberDTO(
     @SerialName("id") val memberId: Long,
-    @SerialName("guild_id") val guildId: Long,
-    @SerialName("user_id") val userId: Long,
+    val guildId: Long,
+    val userId: Long,
     val name: String,
     val gender: String,
     val birthdate: String,
@@ -29,7 +29,7 @@ data class MemberDTO(
     val lover: Long?,
     val exp: Int,
     val lvl: Int,
-    @SerialName("up_exp") val upExp: Int,
+    val upExp: Int,
     val wallet: Int,
 )
 

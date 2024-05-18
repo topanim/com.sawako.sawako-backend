@@ -12,6 +12,17 @@ import io.ktor.util.pipeline.*
 
 val createMember: suspend PipelineContext<Unit, ApplicationCall>.(CreateMember) -> Unit = {
     val receive = call.receive<CreateMemberBodyReceive>()
-    MembersService.createMember(receive.guildId, receive.userId)
-    call.respond(HttpStatusCode.OK, CreateMemberResponse())
+    try {
+        MembersService.createMember(receive.guildId, receive.userId)
+        call.respond(HttpStatusCode.OK, CreateMemberResponse())
+    } catch (e: Exception) {
+        call.respond(
+            HttpStatusCode.Conflict,
+            CreateMemberResponse {
+                message = e.message.toString()
+                status = HttpStatusCode.Conflict.value
+            }
+        )
+    }
+
 }

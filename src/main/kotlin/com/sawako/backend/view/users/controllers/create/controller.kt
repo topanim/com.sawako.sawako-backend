@@ -12,6 +12,16 @@ import io.ktor.util.pipeline.*
 
 val createUser: suspend PipelineContext<Unit, ApplicationCall>.(CreateUser) -> Unit = {
     val receive = call.receive<CreateUserReceive>()
-    UsersService.createUser(receive.id)
-    call.respond(HttpStatusCode.Created, CreateUserResponse())
+    try {
+        UsersService.createUser(receive.id)
+        call.respond(HttpStatusCode.Created, CreateUserResponse())
+    } catch (e: Exception) {
+        call.respond(
+            HttpStatusCode.Conflict,
+            CreateUserResponse {
+                message = e.message.toString()
+                status = HttpStatusCode.Conflict.value
+            }
+        )
+    }
 }

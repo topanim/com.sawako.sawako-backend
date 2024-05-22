@@ -12,8 +12,6 @@ import com.sawako.backend.view.members.controllers.fetch.from.guild.one.fetchMem
 import com.sawako.backend.view.members.controllers.fetch.from.guild.one.remotes.FetchMemberByGuild
 import com.sawako.backend.view.members.controllers.fetch.from.guild.top.fetchMembersTopByGuild
 import com.sawako.backend.view.members.controllers.fetch.from.guild.top.remotes.FetchMembersTopByGuild
-import com.sawako.backend.view.members.controllers.fetch.one.fetchMember
-import com.sawako.backend.view.members.controllers.fetch.one.remotes.FetchMember
 import io.ktor.server.resources.*
 import io.ktor.server.routing.Routing
 
@@ -21,8 +19,6 @@ fun Routing.members() {
     post<CreateMember>(createMember)
 
     get<FetchMembers>(fetchMembers)
-
-    get<FetchMember>(fetchMember)
 
     get<FetchMembersByGuild>(fetchMembersByGuild)
 

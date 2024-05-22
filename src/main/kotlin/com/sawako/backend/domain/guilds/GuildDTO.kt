@@ -2,10 +2,9 @@ package com.sawako.backend.domain.guilds
 
 import com.sawako.backend.data.guilds.Guilds.id
 import com.sawako.backend.data.guilds.Guilds.settings
-import com.sawako.backend.domain.guilds.settings.models.GuildSettings
+import com.sawako.backend.domain.guilds.settings.GuildSettings
 import com.sawako.backend.plugins.modules.json
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.Json
 import org.jetbrains.exposed.sql.ResultRow
 
 

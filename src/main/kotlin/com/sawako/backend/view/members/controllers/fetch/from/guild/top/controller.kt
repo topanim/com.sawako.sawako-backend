@@ -14,8 +14,8 @@ val fetchMembersTopByGuild: suspend PipelineContext<Unit, ApplicationCall>.(Fetc
         HttpStatusCode.OK,
         FetchGuildTopResponse(
             when (it.all) {
-                true -> MembersService.getGuildTop(it.parent.guildId, 1, Int.MAX_VALUE)
-                false -> MembersService.getGuildTop(it.parent.guildId, it.page, it.size)
+                true -> MembersService.getGuildTop(it.parent.parent.guildId, 1, Int.MAX_VALUE)
+                false -> MembersService.getGuildTop(it.parent.parent.guildId, it.page, it.size)
             }
         )
     )

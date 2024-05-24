@@ -1,8 +1,8 @@
-package com.sawako.backend.view.members.controllers.delete
+package com.sawako.backend.view.members.controllers.delete.one
 
 import com.sawako.backend.domain.members.MembersService
-import com.sawako.backend.view.members.controllers.delete.remotes.DeleteMember
-import com.sawako.backend.view.members.controllers.delete.remotes.DeleteMemberResponse
+import com.sawako.backend.view.members.controllers.delete.one.remotes.DeleteMember
+import com.sawako.backend.view.members.controllers.delete.one.remotes.DeleteMemberResponse
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.response.*

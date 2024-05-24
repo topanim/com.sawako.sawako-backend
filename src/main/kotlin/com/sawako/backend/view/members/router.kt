@@ -2,8 +2,10 @@ package com.sawako.backend.view.members
 
 import com.sawako.backend.view.members.controllers.create.createMember
 import com.sawako.backend.view.members.controllers.create.remotes.CreateMember
-import com.sawako.backend.view.members.controllers.delete.deleteMember
-import com.sawako.backend.view.members.controllers.delete.remotes.DeleteMember
+import com.sawako.backend.view.members.controllers.delete.from.guild.deleteMembersByGuild
+import com.sawako.backend.view.members.controllers.delete.from.guild.remotes.DeleteMembersByGuild
+import com.sawako.backend.view.members.controllers.delete.one.deleteMember
+import com.sawako.backend.view.members.controllers.delete.one.remotes.DeleteMember
 import com.sawako.backend.view.members.controllers.fetch.all.fetchMembers
 import com.sawako.backend.view.members.controllers.fetch.all.remotes.FetchMembers
 import com.sawako.backend.view.members.controllers.fetch.from.guild.all.fetchMembersByGuild
@@ -25,6 +27,8 @@ fun Routing.members() {
     get<FetchMemberByGuild>(fetchMemberByGuild)
 
     get<FetchMembersTopByGuild>(fetchMembersTopByGuild)
+
+    delete<DeleteMembersByGuild>(deleteMembersByGuild)
 
     delete<DeleteMember>(deleteMember)
 

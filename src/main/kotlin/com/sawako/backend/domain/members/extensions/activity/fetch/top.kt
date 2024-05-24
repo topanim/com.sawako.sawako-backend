@@ -9,5 +9,5 @@ suspend fun MembersService.getGuildTop(guildId: Long, page: Int, size: Int) =
     Members.top(
         guildId,
         size,
-        (page * size).toLong()
+        (page.minus(1) * size).toLong()
     ).toListMemberDTO()
